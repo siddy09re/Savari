@@ -27,7 +27,12 @@ const userschema = new mongoose.Schema({
         required : true,
         select:false,
     },
-    socket_id:{
+    phonenumber :{ 
+      type : Number,
+      required:true,
+      unique:true,
+  },
+    socketId:{
         type:String,
     }
 
