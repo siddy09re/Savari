@@ -68,9 +68,7 @@ const CaptainLogin = () => {
   return (
     <div className='flex flex-col justify-between h-screen px-6 py-12'>
       <div>
-        <div className='w-[200px]'>
-          <img src='https://static.vecteezy.com/system/resources/previews/027/127/451/non_2x/uber-logo-uber-icon-transparent-free-png.png' alt='Uber Logo' width='100%' height='100%' />
-        </div>
+       <h1 className=" text-[44px] z-10 italic font-bold">Savari</h1>
 
         <div className='flex justify-center px-9 mt-10'>
           <form className='w-full max-w-md' onSubmit={formik.handleSubmit}>
@@ -119,7 +117,7 @@ const CaptainLogin = () => {
             )}
 
             <Link to='/Captain-register'>
-              <span className='text-blue-600'>Register as a Kaptain</span>
+              <span className='text-blue-600'>Register as a Captain</span>
             </Link>
 
             <div onClick={() => handleForgetPassword ()}>

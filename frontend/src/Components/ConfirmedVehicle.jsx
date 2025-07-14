@@ -56,14 +56,14 @@ const ConfirmedVehicle = ({setselectedvehicle , setLookingForDriverstate , picku
    }
   
   return (
-    <div className='w-[100%] bg-white z-20 px-5'>
+    <div className='w-[100%] bg-white z-20 px-5 max-h-[900px]'>
 
                 <div className='w-full flex justify-center '>
                   <IoIosArrowDown className='h-10' onClick={() => setselectedvehicle(false)}/>
                 </div>
 
-                <div className='my-2 border-b-2 ' >
-                    <img src={selectedvehicle?.image} className='w-full' />
+                <div className='my-2 border-b-2 flex justify-center' >
+                    <img src={selectedvehicle?.image} className='w-full max-h-[200px] max-w-[400px]' />
                 </div>
 
                 <h1 className='w-full flex flex-col items-center gap-3 text-[20px]

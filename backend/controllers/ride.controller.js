@@ -94,6 +94,9 @@ module.exports.fetchNearbyUsers = async (req, res, next) => {
       const lng = CaptainInfo.location.coordinates[0];
       const lat = CaptainInfo.location.coordinates[1];
       const vehicleType = CaptainInfo.vehicle.vehicleType;
+      // console.log("Coordinates:", lat, lng);
+      // console.log("the captain info is" , CaptainInfo)
+
   
       // Step 4: Fetch nearby users
       const response = await rideService.getUsersInTheRadius(lat, lng, 10, vehicleType);

@@ -131,8 +131,12 @@ const {socket} = useContext(SocketContext);
       
         
        
-        instructions.innerHTML = `<p><strong>Distance: ${Math.round(data.distance /1000 )}Km</strong></p>`;
-        instructions.style.display = 'block'; 
+        // instructions.innerHTML = `
+        //   <h1 class="rounded-xl p-0 m-0 text-base font-bold">
+        //     Distance: ${Math.round(data.distance / 1000)} Km
+        //   </h1>
+        // `;
+        // instructions.style.display = 'block'; 
 
         setdistance(Math.round(data.distance /1000));
       } else {

@@ -58,6 +58,12 @@ const UserLogin = () => {
   });
 
   const handleForgetPassword = async() => {
+
+     if (!formik.values.email) {
+    setloginError('Please enter your email before proceeding to reset password.');
+    return;
+  }
+
     try{
      const response = await axios.post(`${import.meta.env.VITE_BASE_URL}/forget/otp`, { email: formik.values.email });
       if(response.status === 200){
@@ -77,7 +83,7 @@ const UserLogin = () => {
   return (
     <div className='flex flex-col justify-between h-screen px-6 py-12'>
       <div>
-        <h1 className='text-[42px]'>Uber</h1>
+         <h1 className=" text-[44px] z-10 italic font-bold">Savari</h1>
 
         <div className='flex justify-center px-9 mt-10'>
           <form className='w-full max-w-md' onSubmit={formik.handleSubmit}>

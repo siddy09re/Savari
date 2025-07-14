@@ -111,7 +111,7 @@ const [PaymentData,setPaymentData] = useState(null);
 
                     <div className="h-screen relative overflow-hidden">
 
-                        <h1 className="absolute top-10 left-5 text-[44px] ">Uber</h1>
+                        <h1 className="absolute top-10 left-5 text-[44px] z-10 italic font-bold">Savari</h1>
 
                         <MapBoxContainer latitude={latitude} longtitude={longtitude} mapRef={mapRef} mapboxgl={mapboxgl} 
                        pickupcoord={TravelDetails?.destinationcoord.coordinates} drivercoord = {DriverLocation} />
@@ -128,14 +128,14 @@ const [PaymentData,setPaymentData] = useState(null);
                         <GiPathDistance className="text-[40px]" />
                         <h2>{TravelDetails?.distance} km left</h2>
                       </div>
-                      <div>
+                      {/* <div>
                         <button
                           className="bg-green-300 px-5 py-3 rounded-xl text-black"
                           onClick={() => setFinishedrideInfo(true)}
                         >
                           Ride Completed
                         </button>
-                      </div>
+                      </div> */}
                     </div>
 
           {

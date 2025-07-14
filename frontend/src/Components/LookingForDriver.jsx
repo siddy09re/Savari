@@ -39,8 +39,8 @@ const LookingForDriver = ({setLookingForDriverstate}) => {
 
                 <h1 className='text-center w-full text-2xl'> Looking for a driver</h1>
 
-                <div className='my-2 border-b-2 ' >
-                    <img src={selectedvehicle?.image} className='w-full' />
+                <div className='my-2 border-b-2 flex justify-center' >
+                    <img src={selectedvehicle?.image} className='w-full max-h-[400px] max-w-[400px]' />
                 </div>
                 
                 <div className='flex gap-2 items-center my-2 border-b-2 p-3'>

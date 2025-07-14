@@ -28,10 +28,10 @@ module.exports.emailsent = async (req,res,next) => {
           });
 
           const mailOptions = {
-            from: 'peterapps70@gmail.com',
+            from: 'nairsddhrth@gmail.com',
             to: email,
             subject: 'Sending Email using Node.js',
-            text: `The Otp from Uber Project is ${otp}`
+            text: `The Otp from Savari Project is ${otp}`
           };
 
           transporter.sendMail(mailOptions, function(error, info){

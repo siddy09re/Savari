@@ -45,7 +45,7 @@ app.post('/webhook', bodyParser.raw({ type: 'application/json' }), async (reques
   const payload = request.body;
   const sig = request.headers['stripe-signature'];
 
-  console.log('Received webhook event:' , payload);
+  console.log('Received webhook event:😃😃😃😃' , payload);
   let event;
 
   // try {

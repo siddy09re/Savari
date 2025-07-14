@@ -80,9 +80,9 @@ const CaptainRegister = () => {
     <div className='flex flex-col justify-between h-screen px-6 py-12'>
       <div>
 
-        <div className='w-full flex justify-between items-center '>
-          <img src='https://static.vecteezy.com/system/resources/previews/027/127/451/non_2x/uber-logo-uber-icon-transparent-free-png.png' width='200px' height='100%' />
-          <Link to='/User-register'><span className='text-blue-400'>Register as a User</span></Link>
+        <div className='w-full flex justify-between items-center mb-5 '>
+           <h1 className=" text-[44px] z-10 italic font-bold">Savari</h1>
+          <Link to='/User-register'><span className='text-blue-600 text-[19px]'>Register as a User</span></Link>
         </div>
 
         <div className='flex justify-center px-4 mt-0'>
@@ -203,7 +203,7 @@ const CaptainRegister = () => {
             </div>
           </div>
 
-            <div className='mt-4'>
+            <div className='mt-3 mb-3'>
               <label className='mb-3 block whitespace-nowrap text-[18px]'>Choose the vehicle</label>
               <select
                 name='vehicle.vehicleType'

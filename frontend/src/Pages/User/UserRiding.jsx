@@ -103,7 +103,7 @@ const UserRiding = () => {
                        <Link to='/User-screen'><IoHome className='w-8 h-8'/></Link>  
                 </div>
 
-                    <h1 className="absolute top-10 left-5 text-[44px] ">Uber</h1>
+                    <h1 className="absolute top-10 left-5 text-[44px] z-10 italic font-bold">Savari</h1>
                    
                     <MapBoxContainer  mapRef={mapRef} mapboxgl={mapboxgl} latitude={latitude} longtitude={longtitude} setdistance={setfinaldistance}
                    destinationcoord={RideDetails?.destinationcoord.coordinates} pickupcoord = {[longtitude,latitude]} />

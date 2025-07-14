@@ -64,11 +64,10 @@ useEffect(() => {
     
                     <h1 className='text-center w-full text-2xl'> Driver Found</h1>
     
-                    <div className='my-2 border-b-2 flex gap-8 py-2 items-center' >
-                        <div className='flex items-center'>
-                            <img src={selectedvehicle?.image} className='w-20  h-20 rounded-full' />
-                            <img src='https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS-zu52lvf7RuyygUgHpXInxtwj
-                            mdTWtl8N6w&s' className='w-20  h-20 rounded-full'/>
+                    <div className='my-2 border-b-2 flex gap-8 py-2 items-center justify-between' >
+                        <div className='flex items-center '>
+                            <img src={selectedvehicle?.image} className='w-28  h-20 rounded-full' />
+                            <img src='https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSeyKsVv8iDGr6Q3LF9tIdyY_dOi79dqJKjIw&s' className='w-20  h-20 rounded-full'/>
                         </div>
                         <div className='flex flex-col justify-start text-[18px] '>
                             <p>Name:- {CapDetails?.fullname.firstname}</p>

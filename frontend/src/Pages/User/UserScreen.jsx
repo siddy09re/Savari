@@ -247,7 +247,8 @@ const UserScreen = () => {
     <div className="relative w-full h-screen overflow-hidden">
       {/* //this overflow clip is used because the location guys where showing up , when scrolled down */}
 
-      <h1 className="absolute top-10 left-5 text-[44px] z-10 ">Uber</h1>
+      <h1 className="absolute top-10 left-5 text-[44px] z-10 italic font-bold">Savari</h1>
+      
       <button
         className="absolute top-[7rem] right-3 text-[44px] z-10"
         onClick={() => geolocaton()}
@@ -258,6 +259,12 @@ const UserScreen = () => {
 
       <MapBoxContainer longtitude={longtitude} latitude={latitude} mapRef={mapRef} mapboxgl={mapboxgl} pickupcoord={pickupcoord}
       destinationcoord={destinationcoord} setdistance={setdistance}/>
+
+      {
+        distance && 
+        <h1 className="absolute z-10 font-bold text-[18px] bottom-[30%] left-10 px-3 py-2 bg-white rounded-2xl"> Distance : {distance}Km</h1>
+      }
+      
 
       {!panelopen && (
         <div
@@ -270,7 +277,7 @@ const UserScreen = () => {
 
       {/* //added overflow-clip rather than on top */}
       <div className="flex flex-col justify-end absolute bottom-0 w-full z-10 ">
-        <div className="bg-white p-5 w-full h-[25dvh] relative ">
+        <div className="bg-white p-5 w-full  h-[25dvh] relative ">
           <h2 className="text-3xl font-semibold"> Find a trip </h2>
         
 
@@ -363,7 +370,7 @@ const UserScreen = () => {
       </div>
 
       <div
-        className="flex flex-col gap-2 fixed z-10 translate-y-[100%] bottom-[0px] px-2 py-2 bg-white"
+        className="flex flex-col gap-2 fixed z-10 translate-y-[100%] bottom-[0px] px-2 py-2 bg-white w-full"
         ref={vehiclepanelref}
       >
         <VehiclesPanel

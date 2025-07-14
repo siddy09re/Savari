@@ -91,6 +91,7 @@ const CaptainScreen = () => {
             lng: longitude
           }
         });
+
       } catch (err) {
         console.log("Error getting location:", err);
       }
@@ -194,7 +195,7 @@ useEffect(() => {
 
                 <div className="h-screen relative overflow-hidden">
 
-                    <h1 className="absolute top-10 left-5 text-[44px] ">Uber</h1>
+                    <h1 className="absolute top-10 left-5 text-[44px] z-10 italic font-bold">Savari</h1>
                     <MapBoxContainer latitude={latitude} longtitude={longtitude} mapRef={mapRef} mapboxgl={mapboxgl} 
                     pickupcoord={pickupcoord} destinationcoord={destinationcoord} drivercoord = {DriverLocation} 
                     TravelDetails = {TravelDetails}

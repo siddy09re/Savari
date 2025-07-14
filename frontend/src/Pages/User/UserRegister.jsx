@@ -68,7 +68,7 @@ const UserRegister = () => {
     <div className='flex flex-col justify-between h-screen px-6 py-12'>
       <div>
         <div className='flex justify-between items-center w-full'>
-          <h1 className='text-[42px]'>Uber</h1>
+           <h1 className=" text-[44px] z-10 italic font-bold">Savari</h1>
           <Link to='/Captain-register'><span className='text-blue-400'>Register as a Captain</span></Link>
         </div>
 

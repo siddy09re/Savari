@@ -15,8 +15,7 @@ const CaptainDetails = () => {
 
                            <div className='flex items-center'>
                             
-                               <img src='https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS-zu52lvf7RuyygUgHpXInxtwj
-                               mdTWtl8N6w&s' className='w-24  h-24 m-2 rounded-full'/>
+                               <img src='https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSeyKsVv8iDGr6Q3LF9tIdyY_dOi79dqJKjIw&s' className='w-24  h-24 m-2 rounded-full'/>
                            </div>
 
                            <div className='flex flex-col justify-start'>
