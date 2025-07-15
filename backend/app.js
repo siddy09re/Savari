@@ -13,7 +13,7 @@ const bodyParser = require('body-parser');
 const PaymentController = require('./controllers/payment.controller')
 
 app.use(cors({
-  origin: ['http://localhost:5173', 'https://admin.socket.io','https://p1s34wmb-5173.inc1.devtunnels.ms'], 
+  origin: ['http://localhost:5173', 'https://admin.socket.io','https://p1s34wmb-5173.inc1.devtunnels.ms','https://savari-blue.vercel.app/'], 
    credentials: true
 }));
 
