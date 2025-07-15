@@ -192,37 +192,37 @@ const UserScreen = () => {
   //   [LookingForDriverstate]
   // );
 
-  useGSAP(
-    function () {
-      if (DriverFound) {
-        gsap.to(DriverFoundref.current, {
-          transform: "translateY(0)",
-        });
-      } else {
-        gsap.to(DriverFoundref.current, {
-          transform: "translateY(100%)",
-        });
-      }
-    },
-    [DriverFound]
-  );
+  // useGSAP(
+  //   function () {
+  //     if (DriverFound) {
+  //       gsap.to(DriverFoundref.current, {
+  //         transform: "translateY(0)",
+  //       });
+  //     } else {
+  //       gsap.to(DriverFoundref.current, {
+  //         transform: "translateY(100%)",
+  //       });
+  //     }
+  //   },
+  //   [DriverFound]
+  // );
 
   const geolocaton = () => {
-    console.log("🔥 useEffect is called");
+    console.log(" useEffect is called");
 
     if ("geolocation" in navigator) {
-      console.log("✅ Geolocation is supported");
+      console.log("Geolocation is supported");
 
       navigator.geolocation.getCurrentPosition(
         (position) => {
-          console.log("📍 successlocation:", position);
+          console.log(" successlocation:", position);
           const { latitude, longitude } = position.coords;
           console.log("Latitude:", latitude, "Longitude:", longitude);
           setlatitude(latitude);
           setlongtitude(longitude);
         },
         (error) => {
-          console.error("❌ errorlocation:", error);
+          console.error(" errorlocation:", error);
           // alert("Please enable location");
         }
         // {
@@ -230,7 +230,7 @@ const UserScreen = () => {
         // }
       );
     } else {
-      console.warn("🚫 Geolocation not supported");
+      console.warn("Geolocation not supported");
     }
   };
 
@@ -245,7 +245,7 @@ const UserScreen = () => {
 
   return (
     <div className="relative w-full h-screen overflow-hidden">
-      {/* //this overflow clip is used because the location guys where showing up , when scrolled down */}
+      
 
       <h1 className="absolute top-10 left-5 text-[44px] z-10 italic font-bold">Savari</h1>
       
@@ -407,11 +407,13 @@ const UserScreen = () => {
       </div>
 
       <div
-        className="translate-y-[100%] bottom-0 fixed z-10 w-full bg-white"
-        ref={DriverFoundref}
+       className={` ${
+          DriverFound ? "translate-y-0" : " translate-y-full"
+        } bottom-[0px] fixed z-10 w-full bg-white transition-all transform duration-500`}
       >
         <DriverFoundPage setDriverFound={setDriverFound} setLookingForDriverstate={setLookingForDriverstate}/>
       </div>
+
     </div>
   );
 };

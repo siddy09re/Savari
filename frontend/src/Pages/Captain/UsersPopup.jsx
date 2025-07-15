@@ -43,7 +43,7 @@ const UsersPopup = ({ UserDetails, setModelStatus,setavailableRide }) => {
                     <p className='text-lg '> Duration :- {item.duration} Mins</p>
                   }
 
-                    <p className='flex gap-1 items-center'>Fare : {item.fare} <FaRupeeSign /> </p>
+                    <p className='flex gap-1 items-center'>Fare : <FaRupeeSign className='text-[13px]'/> {item.fare}  </p>
               </div>
             ))
           )}
