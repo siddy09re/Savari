@@ -29,8 +29,8 @@ module.exports.payment = async (req, res, next) => {
         },
       ],
       mode: 'payment',
-      success_url: 'http://localhost:5173/User-screen',
-      cancel_url: 'http://localhost:5173/User-screen',
+      success_url: 'https://savari-blue.vercel.app/Captain-screen',
+      cancel_url: 'https://savari-blue.vercel.app/Captain-screen',
       metadata: {
         pickup: rideDetails.Pickup,
         destination: rideDetails.Destination,
