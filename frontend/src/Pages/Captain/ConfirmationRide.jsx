@@ -13,6 +13,7 @@ import { SocketContext } from '../context/SocketContext';
 import { useContext } from 'react';
 import { useDispatch } from 'react-redux';
 import { SetTravelDetails } from '../../Redux/CaptainDetailsSlice';
+import ButtonLoader from '../../Components/Loader/ButtonLoader';
 
 import axios from 'axios';
 
@@ -81,6 +82,7 @@ const ConfirmationRide = ({ setconfirmRide  }) => {
   const FetchedUserDetails = useSelector((state) => state.CaptainDetails.FetchedUserDetails);
   const [otpinput , setotpinput] = useState(null);
   const [otpError, setOtpError] = useState('');
+   const[buttonloader,setbuttonloader] = useState(false);
   const dispatch = useDispatch();
   
 
@@ -101,7 +103,7 @@ const {socket} = useContext(SocketContext);
       rideId: TravelDetails._id,
       OTP: otpinput,
     };
-  
+    setbuttonloader(true);
     try {
       const response = await axios.post(`${import.meta.env.VITE_BASE_URL}/rides/CheckOTP`, data);
   
@@ -110,12 +112,12 @@ const {socket} = useContext(SocketContext);
         setOtpError(''); // clear any previous error
 
         socket.emit('RideConfirmed' , {userId : TravelDetails.user});
-
+        setbuttonloader(false);
          navigate('/Captain-riding')
       }
     } catch (err) {
       console.log("Error in handle confirm", err);
-  
+      setbuttonloader(false);
       // Check if the error is a 400 from the backend
       if (err.response && err.response.status === 400) {
         setOtpError('Invalid OTP. Please try again.');
@@ -178,9 +180,10 @@ const {socket} = useContext(SocketContext);
 
       <div className='mt-5'>
         <button
-          className='bg-green-400 w-full px-3 py-2 text-2xl rounded-lg my-4'
+          className='bg-green-400 w-full px-3 py-2 text-2xl rounded-lg my-4 flex gap-2 justify-center items-center'
           onClick={() => handleconfirm()}>
-          Start The Ride
+            {buttonloader && <ButtonLoader/>}
+          <p>Start The Ride</p>
         </button>
         <button
           className='bg-gray-300 w-full px-3 py-2 text-2xl rounded-lg'

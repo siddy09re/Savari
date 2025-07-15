@@ -262,7 +262,7 @@ const UserScreen = () => {
 
       {
         distance && 
-        <h1 className="absolute z-10 font-bold text-[18px] bottom-[30%] left-10 px-3 py-2 bg-white rounded-2xl"> Distance : {distance}Km</h1>
+        <h1 className="absolute z-10 font-bold text-[18px] bottom-[30%] left-5 px-3 py-2 bg-white rounded-2xl"> Distance : {distance}Km</h1>
       }
       
 

@@ -9,6 +9,7 @@ import { useDispatch } from 'react-redux';
 import { SetTravelDetails } from '../../Redux/CaptainDetailsSlice';
 import RideCanceledImage from '../../assets/RideCancelled.png'
 import { SocketContext } from '../context/SocketContext';
+import ButtonLoader from '../../Components/Loader/ButtonLoader';
 
 
 
@@ -19,6 +20,7 @@ const AvailableRide = ({setavailableRide , setconfirmRide , setpickupcoord , set
   const FetchedUserDetails = useSelector((state) => state.CaptainDetails.FetchedUserDetails);
   const CaptainInfo = useSelector((state) => state.CaptainDetails.CaptainDetails);
   const [Comparison , setComparison] = useState(true);
+  const[buttonloader,setbuttonloader] = useState(false);
 
   console.log("The TravelDetails which i got in rides" , TravelDetails);
   console.log("Comparison value in available ride is" , Comparison);
@@ -31,11 +33,13 @@ const AvailableRide = ({setavailableRide , setconfirmRide , setpickupcoord , set
 
   const handleAccept = () => {
   
+    setbuttonloader(true);
     setavailableRide(false);
     setComparison(false);
     setShowDriverMarker(true);
 
     socket.emit('ride-accepted' , {userId: TravelDetails.user, rideId : TravelDetails._id ,CaptainInfo });
+    setbuttonloader(false);
     setconfirmRide(true);
   }
 
@@ -47,34 +51,11 @@ const AvailableRide = ({setavailableRide , setconfirmRide , setpickupcoord , set
 }
 
 
-// useEffect(() => {
-//   if (!socket) {
-//     console.log("🛑 Socket not available");
-//     return;
-//   }
-
-//   const handleCancelComparison = async () => {
-//     console.log("🚫 Cancel Comparison is called");
-//     setComparison(false);
-//   };
-
-  
-//   socket.on("CancelComparison", handleCancelComparison);
-
-//   // Cleanup to prevent duplicate listeners
-//   return () => {
-//     console.log("🧹 Cleaning up CancelComparison listener");
-//     socket.off("CancelComparison", handleCancelComparison);
-//   };
-// }, [socket]);
-
-
-
 
 
 
 useEffect(() => {
-  if (!Comparison) return; // run only when Comparison is true
+  if (!Comparison) return; 
 
   if (!TravelDetails || !FetchedUserDetails || FetchedUserDetails.length === 0) return;
 
@@ -129,8 +110,8 @@ return (
                       </div>
                   </div>
 
-                  <button className='bg-green-400 w-full px-3 py-2 text-2xl rounded-lg my-4'
-                  onClick={() => handleAccept()}>Accept</button>
+                  <button className='bg-green-400 w-full px-3 py-2 text-2xl rounded-lg my-4 flex justify-center items-center gap-2'
+                  onClick={() => handleAccept()}>  {buttonloader && <ButtonLoader/>} <p>Accept</p></button>
                   <button className='bg-gray-300 w-full px-3 py-2 text-2xl rounded-lg' 
                   onClick={() => handleIgnore() }>Ignore</button>
 

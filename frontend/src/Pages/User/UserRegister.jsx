@@ -6,11 +6,16 @@ import * as Yup from 'yup';
 import axios from 'axios';
 // import { useContext } from 'react';
 import { UserDataContext } from '../context/UserContext'
+import ButtonLoader from '../../Components/Loader/ButtonLoader';
+import { FaRegEye } from "react-icons/fa";
+import { FaRegEyeSlash } from "react-icons/fa6";
 
 const UserRegister = () => {
 
   const navigate = useNavigate();
   const [registerError , setregisterError] = useState(' ');
+  const[buttonloader,setbuttonloader] = useState(false);
+  const [showpassword,setshowpassword] = useState(false);
 
   // const { user, setuser } = useContext(UserDataContext)
 
@@ -42,7 +47,7 @@ const UserRegister = () => {
     validationSchema,
     onSubmit: async (values) => {
       console.log("User Register Data", values);
-
+      setbuttonloader(true);
       try {
         const response = await axios.post(`${import.meta.env.VITE_BASE_URL}/users/register`, values);
         if (response.status === 201) {
@@ -51,10 +56,12 @@ const UserRegister = () => {
           localStorage.setItem('Usertoken' , data.token);
           // setuser(data.user);
           formik.resetForm();
+          setbuttonloader(false);
           navigate('/User-screen');
         }
       } catch (err) {
         console.error("Registration error:", err);
+        setbuttonloader(false);
         if(err.response && err.response.status === 400){
           setregisterError('Invalid registration details. Please check your input.');
         }else{
@@ -69,7 +76,7 @@ const UserRegister = () => {
       <div>
         <div className='flex justify-between items-center w-full'>
            <h1 className=" text-[44px] z-10 italic font-bold">Savari</h1>
-          <Link to='/Captain-register'><span className='text-blue-400'>Register as a Captain</span></Link>
+          
         </div>
 
         <div className='flex justify-center px-9 mt-10'>
@@ -123,19 +130,36 @@ const UserRegister = () => {
             </div>
 
             <label htmlFor='password' className='text-[24px] block mb-2'>Enter your Password</label>
+            <div className='relative'>
             <input
               name='password'
               placeholder='password'
-              type='password'
+              type={showpassword ? 'text' : 'password'}
               value={formik.values.password}
               onChange={formik.handleChange}
               className='px-3 py-2 border-2 w-full rounded mb-1'
             />
+
+                                      <button
+                                        type="button"
+                                        onClick={() => setshowpassword(!showpassword)}
+                                        className=" absolute right-5 top-3 text-[20px]"
+                                      >
+                                        {showpassword ? <FaRegEye/> : <FaRegEyeSlash/> }
+                                      </button>
+            </div>
             <div className='text-red-600 text-sm mb-3'>
               {formik.errors.password && formik.touched.password && <div>{formik.errors.password}</div>}
             </div>
 
-            <button className='bg-black text-white w-full px-3 py-2 rounded-xl mb-2' type='submit'>Register</button>
+            <button
+                className='bg-black text-white w-full px-3 py-2 rounded-xl mb-2 flex gap-3 justify-center items-center'
+                type='submit'
+              >
+                {buttonloader && <ButtonLoader />}
+                <p>Register</p>
+              </button>
+
 
                 {registerError && (
                   <p className="text-red-500 text-lg text-center mt-2">{registerError}</p>
@@ -145,6 +169,12 @@ const UserRegister = () => {
             <Link to='/User-login'>
               Already have an account? <span className='text-blue-600'>Login</span>
             </Link>
+
+            <button className='bg-orange-100 text-orange-500 px-4 py-2 rounded-2xl mt-3 border border-orange-200 hover:bg-orange-100 hover:text-orange-700 transition-all duration-200 text-sm font-medium shadow-sm hover:shadow-md'>
+            <Link to='/Captain-register'>
+              <span className='text-[14px]'>Register as a Captain instead?</span>
+            </Link>
+          </button>
           </form>
         </div>
       </div>

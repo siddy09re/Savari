@@ -5,11 +5,17 @@ import { useFormik } from 'formik'
 import * as Yup from 'yup'
 import axios from 'axios'
 // import { CaptainDataContext } from '../context/CaptainContext'
+import ButtonLoader from '../../Components/Loader/ButtonLoader'
+import { FaRegEye } from "react-icons/fa";
+import { FaRegEyeSlash } from "react-icons/fa6";
 
 const CaptainRegister = () => {
 
   const navigate = useNavigate();
   const [registerError, setRegisterError] = useState( ' ');
+  const[buttonloader,setbuttonloader] = useState(false);
+   const [showpassword,setshowpassword] = useState(false);
+
 
 // const {captain , setcaptain} = React.useContext(CaptainDataContext);
 
@@ -55,16 +61,19 @@ const CaptainRegister = () => {
     validationSchema,
     onSubmit: async (values) => {
       console.log("Captain Register Data", values);
+      setbuttonloader(true);
       try{
         const response = await axios.post(`${import.meta.env.VITE_BASE_URL}/captains/register`, values);
 
         if(response.status === 201){
           console.log("Captain Registered Successfully", response.data);
           localStorage.setItem('Captaintoken' , response.data.token);
+          setbuttonloader(false);
           navigate('/Captain-screen');
         }
       }catch(err){
         console.log("Registration Error", err);
+        setbuttonloader(false);
         if(err.response && err.response.status === 400){
           setRegisterError('Captain already exists')
         }else {
@@ -77,12 +86,21 @@ const CaptainRegister = () => {
   });
 
   return (
-    <div className='flex flex-col justify-between h-screen px-6 py-12'>
+    <div className='flex flex-col justify-between h-screen px-6 py-12 overflow-y-auto'>
       <div>
 
         <div className='w-full flex justify-between items-center mb-5 '>
-           <h1 className=" text-[44px] z-10 italic font-bold">Savari</h1>
-          <Link to='/User-register'><span className='text-blue-600 text-[19px]'>Register as a User</span></Link>
+           <div className="text-[44px] z-10 italic font-bold text-gray-800 flex items-center">
+           <h1> Savari </h1>
+            <div className="ml-2 mt-3">
+              <img 
+                src='https://static.thenounproject.com/png/2688219-200.png'
+                className='w-8 transform scale-x-[-1]'
+                alt="Savari icon"
+              />
+            </div>
+          </div>
+          
         </div>
 
         <div className='flex justify-center px-4 mt-0'>
@@ -138,14 +156,24 @@ const CaptainRegister = () => {
             </div>
 
             <label htmlFor='password' className='text-[20px] block mb-2'>Enter your Password</label>
+            <div className='relative'>
             <input
               name='password'
               placeholder='password'
-              type='password'
+              type={showpassword ? 'text' : 'password'}
               value={formik.values.password}
               onChange={formik.handleChange}
               className='px-3 py-2 border-2 w-full rounded mb-1'
             />
+                              <button
+                                  type="button"
+                                  onClick={() => setshowpassword(!showpassword)}
+                                  className=" absolute right-5 top-3 text-[20px]"
+                                >
+                                  {showpassword ? <FaRegEye/> : <FaRegEyeSlash/> }
+                                </button>
+
+            </div>
             <div className='text-red-600 text-sm mb-3'>
               {formik.errors.password && formik.touched.password && <div>{formik.errors.password}</div>}
             </div>
@@ -187,7 +215,7 @@ const CaptainRegister = () => {
               </div>
 
             <div id="the vehicle plate div">
-            <label className='mb-2 block whitespace-nowrap text-[18px]'>Vehicle Number Plate</label>
+            <label className='mb-2 block whitespace-nowrap text-[18px]'>Number Plate</label>
               <input
                 name='vehicle.NumberPlate'
                 type="text"
@@ -225,7 +253,11 @@ const CaptainRegister = () => {
             </div>
 
 
-            <button className='bg-black text-white w-full px-3 py-2 rounded-xl mb-2' type='submit'>Register</button>
+            <button className='bg-black text-white w-full px-3 py-2 rounded-xl mb-2 flex gap-2 justify-center items-center'
+             type='submit'>
+              {buttonloader && <ButtonLoader/>}
+              <p>Register</p>
+              </button>
 
             {registerError && (
               <p className="text-red-500 text-lg text-center mt-2">{registerError}</p>
@@ -235,11 +267,16 @@ const CaptainRegister = () => {
             <Link to='/Captain-login'>
               Already have an account? <span className='text-blue-600'>Login</span>
             </Link>
+           <button className='bg-green-50 text-green-500 px-4 py-2 rounded-2xl mt-3 border border-green-200 hover:bg-green-100 hover:text-green-700 transition-all duration-200 text-sm font-medium shadow-sm hover:shadow-md'>
+            <Link to='/User-register'>
+              <span className='text-[14px]'>Register as a User instead?</span>
+            </Link>
+          </button>
           </form>
         </div>
       </div>
 
-      <p className='text-[12px] leading-tight text-justify'>By agreeing to this, you are accepting the terms and conditions of the Uber application. Uber will be able to access this information, and by registering, you are giving permission to it. Thank you.</p>
+      <p className='text-[12px] leading-tight text-justify px-4 mt-3'>By agreeing to this, you are accepting the terms and conditions of the Uber application. Uber will be able to access this information, and by registering, you are giving permission to it. Thank you.</p>
     </div>
   )
 }

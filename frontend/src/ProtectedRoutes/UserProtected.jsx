@@ -3,6 +3,7 @@ import { useContext } from 'react'
 import { UserDataContext } from '../Pages/context/UserContext'
 import { useNavigate } from 'react-router-dom'
 import axios from 'axios';
+import ScreenLoader from '../Components/Loader/ScreenLoader';
 
 
 const UserProtected = ({children}) => {
@@ -38,7 +39,9 @@ const UserProtected = ({children}) => {
     
 
 if(isLoading){
-  return <div>Loading...</div>
+  return <div className='flex justify-center items-center h-screen' id='Captain Protected Page'>
+          <ScreenLoader/>
+        </div>
 }
 
   return (

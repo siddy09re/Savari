@@ -8,6 +8,8 @@ import axios from 'axios';
 import { useDispatch } from 'react-redux';
 import {SelectedVehicleDetails } from '../Redux/SelectedVehicleSlice';
 import { SetRideDetails } from '../Redux/SelectedVehicleSlice';
+import { useState } from 'react';
+import ButtonLoader from './Loader/ButtonLoader';
 
 
 
@@ -16,6 +18,7 @@ const ConfirmedVehicle = ({setselectedvehicle , setLookingForDriverstate , picku
    const dispatch = useDispatch();
    console.log(selectedvehicle)
    const token = localStorage.getItem('Usertoken');
+   const[buttonloader,setbuttonloader] = useState(false);
 
    const handleConfirm = async () =>{
 
@@ -29,6 +32,7 @@ const ConfirmedVehicle = ({setselectedvehicle , setLookingForDriverstate , picku
       duration : selectedvehicle.duration,
       vehicleType : selectedvehicle.vehicleType
     }
+    setbuttonloader(true);
     try{
       const response = await axios.post(
         `${import.meta.env.VITE_BASE_URL}/rides/createRide`,
@@ -43,15 +47,15 @@ const ConfirmedVehicle = ({setselectedvehicle , setLookingForDriverstate , picku
           if(response.status === 200){
             const data = response.data;
             console.log("the data after confimring is ",data);
+            setbuttonloader(false);
             setselectedvehicle(false);    
             setLookingForDriverstate(true);
             dispatch(SetRideDetails(data));
           }
     }catch(err){
       console.log("Errors" , err);
-    }
-    
-      
+      setbuttonloader(false);
+    }  
     
    }
   
@@ -88,8 +92,8 @@ const ConfirmedVehicle = ({setselectedvehicle , setLookingForDriverstate , picku
                 </div>
 
                 <div className='w-full px-3 py-4'>
-                  <button className='bg-green-400 w-full px-3 py-2 text-lg rounded-lg' onClick={() => 
-                   handleConfirm()}> Confirm</button>
+                  <button className='bg-green-400 w-full px-3 py-2 text-lg rounded-lg flex gap-2 justify-center items-center' onClick={() => 
+                   handleConfirm()}>   {buttonloader && <ButtonLoader/>}  <p>Confirm</p></button>
                 </div>
 
                 <div className='w-full px-3 py-4'>

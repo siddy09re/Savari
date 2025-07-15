@@ -5,13 +5,17 @@ import * as Yup from 'yup'
 import axios from 'axios';
 // import { useContext } from 'react';
 import { UserDataContext } from '../context/UserContext'
+import ButtonLoader from '../../Components/Loader/ButtonLoader';
+import { FaRegEye } from "react-icons/fa";
+import { FaRegEyeSlash } from "react-icons/fa6";
 
 const UserLogin = () => {
   
 
     const navigate = useNavigate();
     const [loginError , setloginError] = useState('');
-  
+    const[buttonloader,setbuttonloader] = useState(false);
+    const [showpassword,setshowpassword] = useState(false);
     // const { user, setuser } = useContext(UserDataContext);
 
 
@@ -33,7 +37,7 @@ const UserLogin = () => {
     validationSchema,
     onSubmit: async (values) => {
       console.log('Logined User Data', values);
-      
+      setbuttonloader(true);
 
       try{
         const response = await axios.post(`${import.meta.env.VITE_BASE_URL}/users/login`, values);
@@ -43,11 +47,13 @@ const UserLogin = () => {
         localStorage.setItem('Usertoken' , data.token);
         // setuser(data.user);
         formik.resetForm();
+        setbuttonloader(false);
         navigate('/User-screen');
       }
     }catch(err){
         console.log("Login Error", err);
         formik.resetForm();
+        setbuttonloader(false);
         if(err.response && err.response.status === 400){
           setloginError('Invalid email or password');
         }else{
@@ -103,21 +109,34 @@ const UserLogin = () => {
             )}
 
             <label htmlFor='password' className='text-[24px] block mb-2'>Enter your Password</label>
+            <div className='relative'>
             <input
               placeholder='password'
               id='password'
-              type='password'
+              type={showpassword ? 'text' : 'password'}
               name='password'
               onChange={formik.handleChange}
             
               value={formik.values.password}
               className='px-3 py-2 border-2 w-full rounded mb-1'
             />
+
+                        <button
+                            type="button"
+                            onClick={() => setshowpassword(!showpassword)}
+                            className=" absolute right-5 top-3 text-[20px]"
+                          >
+                            {showpassword ? <FaRegEye/> : <FaRegEyeSlash/> }
+                          </button>
+            </div>
             {formik.touched.password && formik.errors.password && (
               <div className='text-red-500 text-sm mb-3'>{formik.errors.password}</div>
             )}
 
-            <button className='bg-black text-white w-full px-3 py-2 rounded-xl mb-2 mt-5' type='submit'>Login</button>
+            <button className='bg-black text-white w-full px-3 py-2 rounded-xl mb-2 mt-5 flex gap-3 justify-center items-center' type='submit'>
+              
+              {buttonloader &&  <ButtonLoader/>}
+              <p>Login</p></button>
 
 
               {loginError && (
@@ -136,7 +155,7 @@ const UserLogin = () => {
       </div>
 
       <div>
-        <button className='bg-green-300 px-3 py-2 rounded-lg w-full'
+        <button className='bg-orange-600 px-3 py-2 rounded-lg w-full text-white'
           onClick={() => {navigate('/Captain-login') , console.log("Join as a Captain")}}>
           Join as a Captain
         </button>

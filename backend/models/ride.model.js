@@ -71,7 +71,13 @@ const rideSchema = new mongoose.Schema({
     otp:{
         type:String,
         select : false
-    }
+    },
+    createdAt: {
+  type: Date,
+  default: Date.now,
+  expires: 21600, // 6 hours
+  select: false,  
+},
 })
 
 const ridemodel = mongoose.model('rideuser' , rideSchema);

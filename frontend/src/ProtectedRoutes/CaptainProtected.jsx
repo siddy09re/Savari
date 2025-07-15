@@ -5,6 +5,7 @@ import { useNavigate } from 'react-router-dom'
 import axios from 'axios';
 import { useDispatch } from 'react-redux';
 import { SetCaptainDetails } from '../Redux/CaptainDetailsSlice';
+import ScreenLoader from '../Components/Loader/ScreenLoader';
 
 const CaptainProtected = ({children}) => {
 
@@ -41,7 +42,9 @@ const CaptainProtected = ({children}) => {
           
 
       if(isLoading){
-        return <div>Loading...</div>
+        return <div className='flex justify-center items-center h-screen'>
+          <ScreenLoader/>
+        </div>
       }
 
   return (
