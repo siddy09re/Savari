@@ -87,7 +87,7 @@ const UserLogin = () => {
   }
 
   return (
-    <div className='flex flex-col justify-between h-screen px-6 py-12'>
+    <div className='flex flex-col justify-between h-[100dvh] px-6 py-12 '>
       <div>
          <h1 className=" text-[44px] z-10 italic font-bold">Savari</h1>
 
