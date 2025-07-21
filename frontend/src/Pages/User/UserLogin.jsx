@@ -91,7 +91,8 @@ const UserLogin = () => {
       <div>
          <h1 className=" text-[44px] z-10 italic font-bold">Savari</h1>
 
-        <div className='flex justify-center px-9 mt-10'>
+        <div className='flex flex-col justify-center px-9 mt-10'>
+          <h1 className='font-bold italic text-[30px]'>Login</h1>
           <form className='w-full max-w-md' onSubmit={formik.handleSubmit}>
             <label htmlFor='email' className='text-[24px] block mb-2'>What's your email</label>
             <input
