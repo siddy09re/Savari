@@ -2,6 +2,7 @@ import React, { useRef, useState , useEffect } from 'react'
 import { Link } from 'react-router-dom'
 import AvailableRide from './AvailableRide';
 import CaptainDetails from './CaptainDetails';
+import { MdMyLocation } from "react-icons/md";
 import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
 import axios from 'axios';
@@ -77,20 +78,39 @@ const CaptainScreen = () => {
   
     const updateLocation = async () => {
       try {
-        const response = await axios.get('https://ipwho.is/');
-        const { latitude, longitude } = response.data;
-        setlatitude(latitude);
-        setlongtitude(longitude);
-  
-        console.log("Location from ipwho.is:", latitude, longitude);
-  
-        socket.emit('update-location-captain', {
+        if ("geolocation" in navigator) {
+      console.log("Geolocation is supported");
+
+      navigator.geolocation.getCurrentPosition(
+        (position) => {
+          console.log(" successlocation:", position);
+          const { latitude, longitude } = position.coords;
+          console.log("Latitude:", latitude, "Longitude:", longitude);
+          setlatitude(latitude);
+          setlongtitude(longitude);
+
+          socket.emit('update-location-captain', {
           userId: CaptainInfo._id,
           location: {
             lat: latitude,
             lng: longitude
           }
         });
+        
+        },
+        (error) => {
+          console.error(" errorlocation:", error);
+          // alert("Please enable location");
+        }
+        // {
+        //   enableHighAccuracy: true
+        // }
+      );
+    } else {
+      console.warn("Geolocation not supported");
+    }
+  
+     
 
       } catch (err) {
         console.log("Error getting location:", err);
@@ -186,6 +206,33 @@ useEffect(() => {
   );
 
 
+    const geolocaton = () => {
+    console.log(" useEffect is called");
+
+    if ("geolocation" in navigator) {
+      console.log("Geolocation is supported");
+
+      navigator.geolocation.getCurrentPosition(
+        (position) => {
+          console.log(" successlocation:", position);
+          const { latitude, longitude } = position.coords;
+          console.log("Latitude:", latitude, "Longitude:", longitude);
+          setlatitude(latitude);
+          setlongtitude(longitude);
+        },
+        (error) => {
+          console.error(" errorlocation:", error);
+          // alert("Please enable location");
+        }
+        // {
+        //   enableHighAccuracy: true
+        // }
+      );
+    } else {
+      console.warn("Geolocation not supported");
+    }
+  };
+
   return (
     <div>
               
@@ -193,7 +240,7 @@ useEffect(() => {
 
              
 
-                <div className="h-screen relative overflow-hidden">
+                <div className="h-[100dvh] relative ">
 
                     <h1 className="absolute top-10 left-5 text-[44px] z-10 italic font-bold">Savari</h1>
                     <MapBoxContainer latitude={latitude} longtitude={longtitude} mapRef={mapRef} mapboxgl={mapboxgl} 
@@ -205,6 +252,13 @@ useEffect(() => {
                                 onClick={() => handleLogout()}>
                                        <BiLogOut className="text-2xl cursor-pointer" />
                     </div>
+                     <button
+                            className="absolute top-[7rem] right-5 p-3 text-[44px] z-10"
+                            onClick={() => geolocaton()}
+                          >
+                            
+                            <MdMyLocation className="text-[24px]"/>
+                          </button>
 
                 </div>
 

@@ -9,7 +9,7 @@ const CaptainDetails = () => {
   const CaptainInfo = useSelector((state) => state.CaptainDetails.CaptainDetails);
   // console.log(CaptainInfo);
   return (
-    <div>
+    <div className=''>
 
                         <div className='my-2  flex gap-3 items-center' >
 
@@ -27,7 +27,7 @@ const CaptainDetails = () => {
                         </div>
    
                   
-                       <div className='my-5 px-6 py-10 bg-orange-400 flex justify-between rounded-3xl'>
+                       <div className='my-3 px-6 py-6 bg-orange-400 flex justify-between rounded-3xl'>
 
                               <div className='flex flex-col items-center'>
                                 <FaClock className='text-4xl' /> {/* or text-5xl, text-6xl */}

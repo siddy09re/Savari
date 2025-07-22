@@ -38,12 +38,28 @@ const UserRiding = () => {
 
   const updateLocation = async () => {
     try {
-      const response = await axios.get('https://ipwho.is/');
-      const { latitude, longitude } = response.data;
-      setlatitude(latitude);
-      setlongtitude(longitude);
+      if ("geolocation" in navigator) {
+      console.log("Geolocation is supported");
 
-      console.log("Location from user side ipwho.is:", latitude, longitude);
+      navigator.geolocation.getCurrentPosition(
+        (position) => {
+          console.log(" successlocation:", position);
+          const { latitude, longitude } = position.coords;
+          console.log("Latitude:", latitude, "Longitude:", longitude);
+          setlatitude(latitude);
+          setlongtitude(longitude);
+        },
+        (error) => {
+          console.error(" errorlocation:", error);
+          // alert("Please enable location");
+        }
+        // {
+        //   enableHighAccuracy: true
+        // }
+      );
+    } else {
+      console.warn("Geolocation not supported");
+    }
     }catch(err){
       console.log("Error from " ,err);
     }
@@ -97,10 +113,10 @@ const UserRiding = () => {
               
            <div className='w-[100%] bg-white z-20  relative'>
 
-                <div className="h-screen relative overflow-hidden">
+                <div className="h-[100dvh] relative overflow-hidden">
 
-                <div className='absolute top-0 right-0 p-3 rounded-full bg-slate-100'>
-                       <Link to='/User-screen'><IoHome className='w-8 h-8'/></Link>  
+                <div className='absolute top-10 right-5 p-3 rounded-full  z-20'>
+                       <Link to='/User-screen'><IoHome className='w-6 h-8'/></Link>  
                 </div>
 
                     <h1 className="absolute top-10 left-5 text-[44px] z-10 italic font-bold">Savari</h1>
@@ -113,12 +129,12 @@ const UserRiding = () => {
                 <div className='w-full bottom-0 px-2 z-10 absolute bg-white'>
        
                        <div className='py-3 border-b-2 flex justify-between items-center px-4' >
-                           <div className='flex items-center'>
-                               <img src={selectedvehicle?.image} className='w-20  h-20 rounded-full' />
+                           <div className='flex items-center gap-2'>
+                               <img src={selectedvehicle?.image} className='w-20  h-16 rounded-full' />
                                <img src='https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS-zu52lvf7RuyygUgHpXInxtwj
-                               mdTWtl8N6w&s' className='w-20  h-20 rounded-full'/>
+                               mdTWtl8N6w&s' className='w-16  h-16 rounded-full'/>
                            </div>
-                           <div className='flex flex-col justify-start text-[20px]'>
+                           <div className='flex flex-col justify-start text-[18px]'>
                                <p><span>{UserCapInfo?.fullname.firstname}</span> <span>{UserCapInfo?.fullname.lastname}</span></p>
                                <p>{UserCapInfo?.vehicle.NumberPlate}</p>
                                
@@ -128,13 +144,13 @@ const UserRiding = () => {
    
                   
                        
-                       <div className='flex gap-2 items-center my-2 border-b-2 p-3'>
-                         <FaLocationDot className='w-8 h-8'/>
-                         <p className='text-lg '>{finaldistance} Km away</p>
+                       <div className='flex gap-2 items-center  border-b-2 p-3'>
+                         <FaLocationDot className='w-6 h-6'/>
+                         <p className='text-[16px] '>{finaldistance} Km away</p>
                        </div>
        
-                       <div className='flex gap-2 items-center my-2 p-3'>
-                         <FaRupeeSign  className='w-8 h-8'/>
+                       <div className='flex gap-2 items-center  p-3'>
+                         <FaRupeeSign  className='w-6 h-6'/>
                          <p className='text-lg '>{selectedvehicle?.price}</p>
                        </div>
 

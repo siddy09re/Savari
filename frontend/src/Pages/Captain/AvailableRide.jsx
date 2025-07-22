@@ -81,38 +81,38 @@ return (
                     <IoIosArrowDown className='h-10' onClick={() => setavailableRide(false)}/>
                   </div>
   
-                  <h1 className='font-semibold w-full text-2xl'>New Ride Available </h1>
+                  <h1 className=' w-full text-xl font-black'>New Ride Available </h1>
 
                
 
                   <div className='flex gap-3 items-center my-2 border-b-2 p-3 justify-center'>
                      
-                      <div className='text-[20px] gap-3 flex flex-col items-center'>
+                      <div className='text-[18px] gap-3 flex flex-col items-center'>
                           <h2>{TravelDetails?.pickup}</h2>
-                          <FaArrowDown/>
+                          <FaArrowDown className='text-[16px]'/>
                           <h3>{TravelDetails?.destination}</h3>
                       </div>
                   </div>
 
 
-                  <div className='flex gap-3 items-center my-2 border-b-2 p-3'>
-                     <div className='text-[20px] gap-3 flex  items-center'>
-                         <GiPathDistance className='text-[30px] font-bold'/>
+                  <div className='flex gap-3 items-center  border-b-2 p-3'>
+                     <div className='text-[18px] gap-3 flex  items-center'>
+                         <GiPathDistance className='text-[20px] font-bold'/>
                          <h2>{TravelDetails?.distance} KM</h2>  
                      </div>
                  </div>
 
 
-                  <div className='flex gap-2 items-center my-2 border-b-2 p-3'>
-                      <FaRupeeSign className='text-[25px]'/>
-                      <div className='text-[20px]'>
+                  <div className='flex gap-2 items-center  border-b-2 p-3'>
+                      <FaRupeeSign className='text-[20px]'/>
+                      <div className='text-[18px]'>
                           <h2>{TravelDetails?.fare}</h2>
                       </div>
                   </div>
 
-                  <button className='bg-green-400 w-full px-3 py-2 text-2xl rounded-lg my-4 flex justify-center items-center gap-2'
+                  <button className='bg-green-400 w-full px-3 py-2 text-lg rounded-lg my-4 flex justify-center items-center gap-2'
                   onClick={() => handleAccept()}>  {buttonloader && <ButtonLoader/>} <p>Accept</p></button>
-                  <button className='bg-gray-300 w-full px-3 py-2 text-2xl rounded-lg' 
+                  <button className='bg-gray-300 w-full px-3 py-2 text-lg rounded-lg' 
                   onClick={() => handleIgnore() }>Ignore</button>
 
                 </div> 

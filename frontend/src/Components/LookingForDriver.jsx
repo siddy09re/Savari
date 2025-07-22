@@ -31,20 +31,20 @@ const LookingForDriver = ({setLookingForDriverstate}) => {
   return (
     <div>
        
-    <div className='w-[100%] bg-white z-20 px-5'>
+    <div className='w-[100%] bg-white z-20 px-5 rounded-2xl'>
                
                 <div className='w-full flex justify-center '>
                   <IoIosArrowDown className='h-10' onClick={() => setLookingForDriverstate(false)}/>
                 </div>
 
-                <h1 className='text-center w-full text-2xl'> Looking for a driver</h1>
+                <h1 className='text-center w-full text-2xl font-black'>Looking for a driver</h1>
 
                 <div className='my-2 border-b-2 flex justify-center' >
-                    <img src={selectedvehicle?.image} className='w-full max-h-[400px] max-w-[400px]' />
+                    <img src={selectedvehicle?.image} className='w-full max-h-[400px] max-w-[200px]' />
                 </div>
                 
-                <div className='flex gap-2 items-center my-2 border-b-2 p-3'>
-                  <FaLocationDot className='w-8 h-8'/>
+                <div className='flex gap-2 items-center border-b-2 p-3'>
+                  <FaLocationDot className=''/>
                   {
                     selectedvehicle?.duration > 60 ?
                     <p className="text-lg">
@@ -56,16 +56,18 @@ const LookingForDriver = ({setLookingForDriverstate}) => {
                
                 </div>
 
-                <div className='flex gap-2 items-center my-2 p-3'>
-                  <FaRupeeSign  className='w-8 h-8'/>
+                <div className='flex gap-2 items-center  p-3'>
+                  <FaRupeeSign  className=''/>
                   <p className='text-lg '>{selectedvehicle?.price}</p>
+                </div>
+
+                <div className='w-full px-3 pb-4'>
+                                    <button className='bg-gray-400 w-full px-3 py-2 text-lg rounded-lg' onClick={() => 
+                                   handleCancelRide()}> Cancel </button>
                 </div>
     </div>
 
-                     <div className='w-full px-3 py-4'>
-                                    <button className='bg-gray-400 w-full px-3 py-2 text-lg rounded-lg' onClick={() => 
-                                   handleCancelRide()}> Cancel </button>
-                      </div>
+                     
 
     </div>
   )

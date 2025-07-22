@@ -12,6 +12,8 @@ import mapboxgl from 'mapbox-gl';
 import { SocketContext } from '../context/SocketContext';
 import { useNavigate } from 'react-router-dom';
 import MapBoxContainer from '../User/MapBoxContainer';
+import { IoHome } from "react-icons/io5";
+import { Link } from 'react-router-dom';
 
 
 const CaptainRiding = () => {
@@ -116,14 +118,18 @@ const [PaymentData,setPaymentData] = useState(null);
                         <MapBoxContainer latitude={latitude} longtitude={longtitude} mapRef={mapRef} mapboxgl={mapboxgl} 
                        pickupcoord={TravelDetails?.destinationcoord.coordinates} drivercoord = {DriverLocation} />
 
-                     <div className="absolute top-12 right-5 p-3 rounded-full bg-slate-100 z-20"
+                       <div className='absolute top-14 right-5 p-3 rounded-full  z-20'>
+                       <Link to='/Captain-screen'><IoHome className='w-6 h-6'/></Link>  
+                      </div>
+
+                     <div className="absolute top-28 right-5 p-3 rounded-full z-20"
                                     onClick={() => handleLogout()}>
                                     <BiLogOut className="text-2xl cursor-pointer" />
                     </div>
                     </div>
 
                      {/* The div that should stick to the bottom of the screen */}
-                    <div className="bg-orange-300 px-5 py-9 z-10 fixed bottom-0 left-0 right-0 flex items-center justify-between">
+                    <div className="bg-orange-300 px-5 py-9 z-10 fixed bottom-0 left-0 right-0 flex items-center rounded-xl justify-between">
                       <div className="flex gap-3 items-center text-xl">
                         <GiPathDistance className="text-[40px]" />
                         <h2>{TravelDetails?.distance} km left</h2>
@@ -133,7 +139,7 @@ const [PaymentData,setPaymentData] = useState(null);
                           className="bg-green-300 px-5 py-3 rounded-xl text-black"
                           onClick={() => setFinishedrideInfo(true)}
                         >
-                          Ride Completed
+                          Ride Completed 
                         </button>
                       </div> */}
                     </div>

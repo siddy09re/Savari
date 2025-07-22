@@ -32,7 +32,7 @@ const VehiclesPanel = ({setvehiclepanel , setselectedvehicle , RideFareandTime})
           },
         {
             name: "UberAuto",
-            seats: 7,
+            seats: 3,
             duration : RideFareandTime?.Auto.timeInMinutes,
             price: RideFareandTime?.Auto.fare,
             description: "Affordable and comportable rides",
@@ -48,7 +48,7 @@ const VehiclesPanel = ({setvehiclepanel , setselectedvehicle , RideFareandTime})
     <div className=''>
 
       <div className='flex items-center justify-between'>
-        <h2 className='font-semibold text-[24px]'>Choose a vehicle wisely </h2>
+        <h2 className='font-semibold text-[24px]'>Choose a vehicle</h2>
         <span><IoIosArrowDown onClick={() => setvehiclepanel(false)}/></span>
       </div>
 

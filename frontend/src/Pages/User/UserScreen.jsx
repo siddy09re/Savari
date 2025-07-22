@@ -134,7 +134,7 @@ const UserScreen = () => {
     function () {
       if (panelopen) {
         gsap.to(panelref.current, {
-          height: "75dvh",
+          height: "73dvh",
           padding: "20px",
         });
       } else {
@@ -244,7 +244,7 @@ const UserScreen = () => {
 
 
   return (
-    <div className="relative w-full h-screen overflow-hidden">
+    <div className="relative w-full h-[100dvh] overflow-hidden ">
       
 
       <h1 className="absolute top-10 left-5 text-[44px] z-10 italic font-bold">Savari</h1>
@@ -277,11 +277,11 @@ const UserScreen = () => {
 
       {/* //added overflow-clip rather than on top */}
       <div className="flex flex-col justify-end absolute bottom-0 w-full z-10 ">
-        <div className="bg-white p-5 w-full  h-[25dvh] relative ">
-          <h2 className="text-3xl font-semibold"> Find a trip </h2>
+        <div className="bg-green-200 px-5 pt-3 rounded-2xl w-full  h-[27dvh]  relative ">
+          <h2 className="text-2xl font-black"> Find a trip </h2>
         
 
-          <div className="absolute top-6 right-10 cursor-pointer z-50">
+          <div className="absolute top-2 right-10 cursor-pointer z-50">
             {panelopen && (
               <IoIosArrowDown
                 size={32}
@@ -353,7 +353,7 @@ const UserScreen = () => {
             </div>
 
 
-            <button type="submit" className="btn-submit absolute right-[43%] bottom-[-6px] z-10" >
+            <button type="submit" className=" absolute bottom-[-5px] right-[45%]  z-10" >
               Submit
             </button>
           </form>
@@ -370,7 +370,7 @@ const UserScreen = () => {
       </div>
 
       <div
-        className="flex flex-col gap-2 fixed z-10 translate-y-[100%] bottom-[0px] px-2 py-2 bg-white w-full"
+        className="flex flex-col gap-2 fixed z-10 translate-y-[100%] bottom-[0px] px-2 py-2 bg-white w-full rounded-2xl"
         ref={vehiclepanelref}
       >
         <VehiclesPanel
@@ -383,7 +383,7 @@ const UserScreen = () => {
       <div
        className={` ${
         selectedvehicle ? "translate-y-0" : " translate-y-full"
-      } bottom-[0px] fixed z-10 w-full bg-white transition-all transform duration-500`}
+      } bottom-[0px] fixed z-10 w-full bg-white transition-all transform duration-500 `}
         // ref={ConfirmedVehicleref}
       >
         <ConfirmedVehicle

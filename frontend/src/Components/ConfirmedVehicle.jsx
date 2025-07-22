@@ -60,38 +60,38 @@ const ConfirmedVehicle = ({setselectedvehicle , setLookingForDriverstate , picku
    }
   
   return (
-    <div className='w-[100%] bg-white z-20 px-5 max-h-[900px]'>
+    <div className='w-[100%] bg-white z-20 px-5 max-h-[900px] rounded-2xl'>
 
                 <div className='w-full flex justify-center '>
                   <IoIosArrowDown className='h-10' onClick={() => setselectedvehicle(false)}/>
                 </div>
 
                 <div className='my-2 border-b-2 flex justify-center' >
-                    <img src={selectedvehicle?.image} className='w-full max-h-[200px] max-w-[400px]' />
+                    <img src={selectedvehicle?.image} className='w-full max-h-[200px] max-w-[200px]' />
                 </div>
 
-                <h1 className='w-full flex flex-col items-center gap-3 text-[20px]
-                py-3 border-b-2 pl-3'>{pickup} <BsArrowDownCircleFill  className='text-[28px]'/> {destination}</h1>
+                <h1 className='w-full flex flex-col items-center gap-3 text-[18px]
+                py-3 border-b-2 pl-3'>{pickup} <BsArrowDownCircleFill  className='text-[20px]'/> {destination}</h1>
                 
-                <div className='flex gap-2 items-center my-2 border-b-2 p-3'>
-                  <FaLocationDot className='w-8 h-8'/>
+                <div className='flex gap-2 items-center  border-b-2 p-3'>
+                  <FaLocationDot className=''/>
                   {
                     selectedvehicle?.duration > 60 ?
-                    <p className="text-lg">
+                    <p className="text-[18px]">
                        {Math.floor(selectedvehicle?.duration / 60)} Hrs {selectedvehicle?.duration % 60} Mins
                     </p>
                     : 
-                    <p className='text-lg '>{selectedvehicle?.duration} Mins</p>
+                    <p className='text-[18px] '>{selectedvehicle?.duration} Mins</p>
                   }
                  
                 </div>
 
-                <div className='flex gap-2 items-center my-2 p-3'>
-                  <FaRupeeSign  className='w-8 h-8'/>
-                  <p className='text-lg '>{selectedvehicle?.price}</p>
+                <div className='flex gap-2 items-center  p-3'>
+                  <FaRupeeSign  className=''/>
+                  <p className='text-[18px] '>{selectedvehicle?.price}</p>
                 </div>
 
-                <div className='w-full px-3 py-4'>
+                <div className='w-full px-3 '>
                   <button className='bg-green-400 w-full px-3 py-2 text-lg rounded-lg flex gap-2 justify-center items-center' onClick={() => 
                    handleConfirm()}>   {buttonloader && <ButtonLoader/>}  <p>Confirm</p></button>
                 </div>

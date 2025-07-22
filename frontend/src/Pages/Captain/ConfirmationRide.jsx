@@ -15,6 +15,7 @@ import { useDispatch } from 'react-redux';
 import { SetTravelDetails } from '../../Redux/CaptainDetailsSlice';
 import ButtonLoader from '../../Components/Loader/ButtonLoader';
 
+
 import axios from 'axios';
 
 
@@ -146,26 +147,26 @@ const {socket} = useContext(SocketContext);
         <IoIosArrowDown className='h-10' onClick={() => setconfirmRide(false)} />
       </div>
 
-      <h1 className='font-semibold text-2xl'>Confirm the Ride</h1>
+      <h1 className=' text-xl font-black'>Confirm the Ride</h1>
 
       <div className='flex gap-3 items-center my-2 border-b-2 p-3 justify-center'>
                          
-                          <div className='text-[20px] gap-3 flex flex-col items-center'>
+                          <div className='text-[18px] gap-3 flex flex-col items-center'>
                               <h2>{TravelDetails?.pickup}</h2>
-                              <FaArrowDown/>
+                              <FaArrowDown className='text-[16px]'/>
                               <h3>{TravelDetails?.destination}</h3>
                           </div>
       </div>
 
-        <div className='flex gap-3 items-center my-2 border-b-2 p-3'>
-                           <div className='text-[20px] gap-3 flex  items-center'>
-                               <GiPathDistance className='text-[30px] font-bold'/>
+        <div className='flex gap-3 items-center border-b-2 p-3'>
+                           <div className='text-[18px] gap-3 flex  items-center'>
+                               <GiPathDistance className='text-[25px] font-bold'/>
                                <h2>{TravelDetails?.distance} KM</h2>  
                            </div>
         </div>
 
       <div className='flex gap-3 items-center border-b-2 p-3'>
-        <FaRupeeSign className='text-[40px]' />
+        <FaRupeeSign className='text-[20px]' />
         <div className='text-[20px]'>
           <h2>{TravelDetails.fare}</h2>
         </div>
@@ -180,13 +181,13 @@ const {socket} = useContext(SocketContext);
 
       <div className='mt-5'>
         <button
-          className='bg-green-400 w-full px-3 py-2 text-2xl rounded-lg my-4 flex gap-2 justify-center items-center'
+          className='bg-green-400 w-full px-3 py-2 text-lg rounded-lg my-4 flex gap-2 justify-center items-center'
           onClick={() => handleconfirm()}>
             {buttonloader && <ButtonLoader/>}
           <p>Start The Ride</p>
         </button>
         <button
-          className='bg-gray-300 w-full px-3 py-2 text-2xl rounded-lg'
+          className='bg-gray-300 w-full px-3 py-2 text-lg rounded-lg'
           onClick={() => handleIgnore() }>
           Ignore
         </button>
