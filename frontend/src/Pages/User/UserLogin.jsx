@@ -87,14 +87,15 @@ const UserLogin = () => {
   }
 
   return (
-    <div className='flex flex-col justify-between h-[100dvh] px-6 py-12 '>
+    <div className='flex flex-col justify-between h-[100dvh] px-6 py-12 bg-gradient-to-br from-emerald-50 via-green-50 to-teal-50 '>
       <div>
          <h1 className=" text-[44px] z-10 italic font-bold">Savari</h1>
 
-        <div className='flex flex-col justify-center px-9 mt-10'>
-          <h1 className='font-bold italic text-[30px]'>Login</h1>
+        <div className='flex flex-col justify-center px-9 mt-5'>
+          <h1 className='font-bold underline text-[30px] w-full text-green-400 text-center mb-4'>Login</h1>
+          
           <form className='w-full max-w-md' onSubmit={formik.handleSubmit}>
-            <label htmlFor='email' className='text-[24px] block mb-2'>What's your email</label>
+            <label htmlFor='email' className='text-[20px] block mb-2'>Email Address</label>
             <input
               placeholder='name@example.com'
               id='email'
@@ -103,13 +104,13 @@ const UserLogin = () => {
               onChange={formik.handleChange}
               
               value={formik.values.email}
-              className='px-3 py-2 border-2 w-full rounded mb-1'
+              className='px-3 py-2 border-2 w-full rounded-xl mb-1'
             />
             {formik.touched.email && formik.errors.email && (
               <div className='text-red-500 text-sm mb-3'>{formik.errors.email}</div>
             )}
 
-            <label htmlFor='password' className='text-[24px] block mb-2'>Enter your Password</label>
+            <label htmlFor='password' className='text-[20px] block mb-2 mt-5'>Password</label>
             <div className='relative'>
             <input
               placeholder='password'
@@ -119,7 +120,7 @@ const UserLogin = () => {
               onChange={formik.handleChange}
             
               value={formik.values.password}
-              className='px-3 py-2 border-2 w-full rounded mb-1'
+              className='px-3 py-2  border-2 w-full rounded-xl mb-1'
             />
 
                         <button
@@ -129,10 +130,16 @@ const UserLogin = () => {
                           >
                             {showpassword ? <FaRegEye/> : <FaRegEyeSlash/> }
                           </button>
+
+                           {formik.touched.password && formik.errors.password && (
+                            <div className='text-red-500 text-sm mb-3'>{formik.errors.password}</div>
+                          )}
+
+                           <div onClick={() => handleForgetPassword ()} className='flex justify-end my-3'>
+                          <p className='text-blue-500 underline'>Forget Password?</p>
+                        </div>
             </div>
-            {formik.touched.password && formik.errors.password && (
-              <div className='text-red-500 text-sm mb-3'>{formik.errors.password}</div>
-            )}
+           
 
             <button className='bg-black text-white w-full px-3 py-2 rounded-xl mb-2 mt-5 flex gap-3 justify-center items-center' type='submit'>
               
@@ -145,12 +152,10 @@ const UserLogin = () => {
               )}
 
             <Link to='/User-register'>
-              New Here? <span className='text-blue-600'>Create an account</span>
+              New to Savari? <span className='text-blue-600'>Create an account</span>
             </Link>
 
-            <div onClick={() => handleForgetPassword ()}>
-              <p className='text-blue-500 underline'>Forget Password?</p>
-            </div>
+           
           </form>
         </div>
       </div>

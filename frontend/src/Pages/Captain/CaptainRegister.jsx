@@ -86,7 +86,8 @@ const CaptainRegister = () => {
   });
 
   return (
-    <div className='flex flex-col justify-between h-screen px-6 py-12 overflow-y-auto'>
+    <div className='flex flex-col justify-between h-screen px-6 pt-12 pb-2 overflow-y-auto bg-gradient-to-br from-orange-50 via-amber-50 to-yellow-50
+'>
       <div>
 
         <div className='w-full flex justify-between items-center mb-5 '>
@@ -103,7 +104,8 @@ const CaptainRegister = () => {
           
         </div>
 
-        <div className='flex justify-center px-4 mt-0'>
+        <div className='flex flex-col justify-center px-4 mt-0'>
+          <h1 className='font-bold underline text-[30px] w-full text-orange-500 text-center mb-4'>Register</h1>
           <form className='w-full max-w-md' onSubmit={formik.handleSubmit}>
             <label htmlFor='firstname' className='text-[20px] block mb-2'>Enter your name</label>
             
@@ -115,7 +117,7 @@ const CaptainRegister = () => {
                 type='text'
                 value={formik.values.fullname.firstname}
                 onChange={formik.handleChange}
-                className='px-3 py-2 border-2 w-full rounded mb-1'
+                className='px-3 py-2 border-2 w-full rounded-xl mb-1'
               />  
                       <div className='text-red-600 text-sm mb-3'>
                       {formik.errors.fullname?.firstname && formik.touched.fullname?.firstname && <div>{formik.errors.fullname.firstname}</div>}
@@ -131,7 +133,7 @@ const CaptainRegister = () => {
                 type='text'
                 value={formik.values.fullname.lastname}
                 onChange={formik.handleChange}
-                className='px-3 py-2 border-2 w-full rounded mb-1'
+                className='px-3 py-2 border-2 w-full rounded-xl mb-1'
               />
                     <div className='text-red-600 text-sm mb-3'>
                    
@@ -142,20 +144,20 @@ const CaptainRegister = () => {
             </div>
         
 
-            <label htmlFor='email' className='text-[20px] block mb-2'>What's your email</label>
+            <label htmlFor='email' className='text-[20px] block mb-2'>Email</label>
             <input
               name='email'
               placeholder='name@example.com'
               type='email'
               value={formik.values.email}
               onChange={formik.handleChange}
-              className='px-3 py-2 border-2 w-full rounded mb-1'
+              className='px-3 py-2 border-2 w-full rounded-xl mb-1'
             />
             <div className='text-red-600 text-sm mb-3'>
               {formik.errors.email && formik.touched.email && <div>{formik.errors.email}</div>}
             </div>
 
-            <label htmlFor='password' className='text-[20px] block mb-2'>Enter your Password</label>
+            <label htmlFor='password' className='text-[20px] block mb-2'>Password</label>
             <div className='relative'>
             <input
               name='password'
@@ -163,7 +165,7 @@ const CaptainRegister = () => {
               type={showpassword ? 'text' : 'password'}
               value={formik.values.password}
               onChange={formik.handleChange}
-              className='px-3 py-2 border-2 w-full rounded mb-1'
+              className='px-3 py-2 border-2 w-full rounded-xl mb-1'
             />
                               <button
                                   type="button"
@@ -179,14 +181,14 @@ const CaptainRegister = () => {
             </div>
 
 
-            <label htmlFor='phonenumber' className='text-[20px] block mb-2'>Enter your Phonenumber</label>
+            <label htmlFor='phonenumber' className='text-[20px] block mb-2'>Phonenumber</label>
             <input
               name='phonenumber'
               placeholder='phonenumber'
               type='number'
               value={formik.values.phonenumber}
               onChange={formik.handleChange}
-              className='px-3 py-2 border-2 w-full rounded mb-1'
+              className='px-3 py-2 border-2 w-full rounded-xl mb-1'
             />
             <div className='text-red-600 text-sm mb-3'>
               {formik.errors.phonenumber && formik.touched.phonenumber && <div>{formik.errors.phonenumber}</div>}
@@ -207,7 +209,7 @@ const CaptainRegister = () => {
                 value={formik.values.vehicle.capacity}
                 onChange={formik.handleChange}
               
-                className=' rounded-lg px-3 py-2 border text-lg placeholder:text-base max-w-[160px] w-full'
+                className=' rounded-xl px-3 py-2 border text-lg placeholder:text-base max-w-[160px] w-full'
               />
               <div className='text-red-600 text-sm'>
                 {formik.touched.vehicle?.capacity && formik.errors.vehicle?.capacity}
@@ -223,7 +225,7 @@ const CaptainRegister = () => {
                 value={formik.values.vehicle.NumberPlate}
                 onChange={formik.handleChange}
         
-                className=' rounded-lg px-4 py-2 border text-lg placeholder:text-base max-w-[170px] w-full'
+                className=' rounded-xl px-4 py-2 border text-lg placeholder:text-base max-w-[170px] w-full'
               />
               <div className='text-red-600 text-sm'>
                 {formik.touched.vehicle?.NumberPlate && formik.errors.vehicle?.NumberPlate}

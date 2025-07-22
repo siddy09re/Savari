@@ -72,16 +72,16 @@ const UserRegister = () => {
   }  );
 
   return (
-    <div className='flex flex-col justify-between h-screen px-6 py-12'>
+    <div className='flex flex-col justify-between h-[100dvh] px-6 pt-12 pb-2 bg-gradient-to-br from-emerald-50 via-green-50 to-teal-50'>
       <div>
         <div className='flex justify-between items-center w-full'>
            <h1 className=" text-[44px] z-10 italic font-bold">Savari</h1>
-          
         </div>
 
-        <div className='flex justify-center px-9 mt-10'>
+        <div className='flex flex-col justify-center px-9 mt-5'>
+          <h1 className='font-bold underline text-[30px] w-full text-green-400 text-center mb-4'>Register</h1>
           <form className='w-full max-w-md' onSubmit={formik.handleSubmit}>
-            <label htmlFor='firstname' className='text-[24px] block mb-2'>Enter your name</label>
+            <label htmlFor='firstname' className='text-[20px] block mb-2'>Enter your name</label>
             <div className='flex gap-2'>
               <div>
                 <input
@@ -90,7 +90,7 @@ const UserRegister = () => {
                   type='text'
                   value={formik.values.fullname.firstname}
                   onChange={formik.handleChange}
-                  className='px-3 py-2 border-2 w-full rounded mb-1'
+                  className='px-3 py-2 border-2 w-full rounded-xl mb-1'
                 />
                <div className='text-red-600 text-sm mb-3'>
                   {formik.touched.fullname?.firstname && formik.errors.fullname?.firstname && (
@@ -106,7 +106,7 @@ const UserRegister = () => {
                   type='text'
                   value={formik.values.fullname.lastname}
                   onChange={formik.handleChange}
-                  className='px-3 py-2 border-2 w-full rounded mb-1'
+                  className='px-3 py-2 border-2 w-full rounded-xl mb-1'
                 />
               <div className='text-red-600 text-sm mb-3'>
                 {formik.touched.fullname?.lastname && formik.errors.fullname?.lastname && (
@@ -116,20 +116,20 @@ const UserRegister = () => {
               </div>
             </div>
 
-            <label htmlFor='email' className='text-[24px] block mb-2'>What's your email</label>
+            <label htmlFor='email' className='text-[20px] block mb-2'>Email</label>
             <input
               name='email'
               placeholder='name@example.com'
               type='email'
               value={formik.values.email}
               onChange={formik.handleChange}
-              className='px-3 py-2 border-2 w-full rounded mb-1'
+              className='px-3 py-2 border-2 w-full rounded-xl mb-1'
             />
             <div className='text-red-600 text-sm mb-3'>
               {formik.errors.email && formik.touched.email && <div>{formik.errors.email}</div>}
             </div>
 
-            <label htmlFor='password' className='text-[24px] block mb-2'>Enter your Password</label>
+            <label htmlFor='password' className='text-[20px] block mb-2'>Password</label>
             <div className='relative'>
             <input
               name='password'
@@ -137,7 +137,7 @@ const UserRegister = () => {
               type={showpassword ? 'text' : 'password'}
               value={formik.values.password}
               onChange={formik.handleChange}
-              className='px-3 py-2 border-2 w-full rounded mb-1'
+              className='px-3 py-2 border-2 w-full rounded-xl mb-1'
             />
 
                                       <button
@@ -180,8 +180,8 @@ const UserRegister = () => {
       </div>
 
       <p className='text-[12px] leading-tight text-justify'>
-        By agreeing to this, you are accepting the terms and conditions of the Uber application.
-        Uber will be able to access this information, and by registering, you are giving permission to it. Thank you.
+        By agreeing to this, you are accepting the terms and conditions of the Savari application.
+        
       </p>
     </div>
   )

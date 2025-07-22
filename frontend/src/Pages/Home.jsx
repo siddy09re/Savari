@@ -5,10 +5,10 @@ import { useNavigate } from 'react-router-dom'
 const Home = () => {
     const navigate = useNavigate();
   return (
-    <div className='h-[100dvh]' >
+    <div className='' >
 
 
-    <div className='h-screen flex justify-between bg-cover bg-center flex-col bg-[url(https://images.unsplash.com/photo-1557404763-69708cd8b9ce?q=80&w=1528&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D)]'>
+    <div className='h-[100dvh] flex justify-between bg-cover bg-center flex-col bg-[url(https://images.unsplash.com/photo-1557404763-69708cd8b9ce?q=80&w=1528&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D)]'>
         <div>
                  <h1 className=" text-[40px] z-10 italic font-bold mt-12 ml-5 text-white">Savari</h1>
         </div>

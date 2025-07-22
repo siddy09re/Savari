@@ -81,7 +81,7 @@ const CaptainLogin = () => {
   }
 
   return (
-    <div className='flex flex-col justify-between h-screen px-6 py-12'>
+    <div className='flex flex-col justify-between h-[100dvh] px-6 py-12 bg-gradient-to-br from-orange-50 via-amber-50 to-yellow-50'>
       <div>
        <div className="text-[44px] z-10 italic font-bold text-gray-800 flex items-center">
            <h1> Savari </h1>
@@ -94,10 +94,11 @@ const CaptainLogin = () => {
             </div>
           </div>
 
-        <div className='flex justify-center px-9 mt-10'>
+        <div className='flex flex-col justify-center px-9 mt-5'>
+          <h1 className='font-bold underline text-[30px] w-full text-green-400 text-center mb-4'>Login</h1>
           <form className='w-full max-w-md' onSubmit={formik.handleSubmit}>
             {/* Email */}
-            <label htmlFor='email' className='text-[24px] block mb-2'>What's your email</label>
+            <label htmlFor='email' className='text-[20px] block mb-2'>Email Address</label>
             <input
               id='email'
               name='email'
@@ -113,7 +114,7 @@ const CaptainLogin = () => {
             ) : <div className='mb-5' />}
 
             {/* Password */}
-            <label htmlFor='password' className='text-[24px] block mb-2'>Enter your Password</label>
+            <label htmlFor='password' className='text-[20px] block mb-2'>Password</label>
             <div className='relative'>
                 <input
                   id='password'
@@ -132,10 +133,16 @@ const CaptainLogin = () => {
               >
                 {showpassword ? <FaRegEye/> : <FaRegEyeSlash/> }
               </button>
-            </div>
-            {formik.touched.password && formik.errors.password ? (
+
+              {formik.touched.password && formik.errors.password ? (
               <div className='text-red-500 text-sm mb-3'>{formik.errors.password}</div>
-            ) : <div className='mb-5' />}
+            ) : <div className='' />}
+
+                    <div onClick={() => handleForgetPassword ()} className='flex justify-end mt-3 mb-5'>
+                  <p className='text-blue-500 underline'>Forget Password?</p>
+                </div>
+            </div>
+            
 
             {/* Submit button */}
             <button
@@ -151,12 +158,10 @@ const CaptainLogin = () => {
             )}
 
             <Link to='/Captain-register'>
-              <span className='text-blue-600'>Register as a Captain</span>
+              New to Savari? <span className='text-blue-600'>Register as a Captain</span>
             </Link>
 
-            <div onClick={() => handleForgetPassword ()}>
-              <p className='text-blue-500 underline'>Forget Password?</p>
-            </div>
+          
 
           </form>
         </div>
