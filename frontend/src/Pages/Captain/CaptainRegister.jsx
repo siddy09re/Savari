@@ -278,7 +278,11 @@ const CaptainRegister = () => {
         </div>
       </div>
 
-      <p className='text-[12px] leading-tight text-justify px-4 mt-3'>By agreeing to this, you are accepting the terms and conditions of the Uber application. Uber will be able to access this information, and by registering, you are giving permission to it. Thank you.</p>
+      <p className='text-[12px] leading-tight text-justify mt-5'>
+        By agreeing to this, you are accepting the terms and conditions of the Savari application.
+        An Original Application made by Siddharth Nair{" "}
+        <Link to='https://github.com/siddy09re' className='text-blue-500 underline'>Github Link</Link>
+      </p>
     </div>
   )
 }

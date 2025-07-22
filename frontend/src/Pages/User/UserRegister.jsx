@@ -180,9 +180,11 @@ const UserRegister = () => {
       </div>
 
       <p className='text-[12px] leading-tight text-justify'>
-        By agreeing to this, you are accepting the terms and conditions of the Savari application.
-        
-      </p>
+  By agreeing to this, you are accepting the terms and conditions of the Savari application.
+  An Original Application made by Siddharth Nair{" "}
+  <Link to='https://github.com/siddy09re' className='text-blue-500 underline'>Github Link</Link>
+</p>
+
     </div>
   )
 }
