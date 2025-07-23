@@ -250,7 +250,7 @@ const UserScreen = () => {
       <h1 className="absolute top-10 left-5 text-[44px] z-10 italic font-bold">Savari</h1>
       
       <button
-        className="absolute top-[7rem] right-3 text-[44px] z-10"
+        className="absolute top-[8rem] right-3 text-[44px] z-10"
         onClick={() => geolocaton()}
       >
         
@@ -268,7 +268,7 @@ const UserScreen = () => {
 
       {!panelopen && (
         <div
-          className="absolute top-[150px] right-1 p-3 rounded-full bg-slate-100 z-20"
+          className="absolute top-12 right-1 p-3 rounded-full bg-slate-100 z-20"
           onClick={() => handleLogout()}
         >
           <BiLogOut className="text-2xl cursor-pointer" />
@@ -277,7 +277,7 @@ const UserScreen = () => {
 
       {/* //added overflow-clip rather than on top */}
       <div className="flex flex-col justify-end absolute bottom-0 w-full z-10 ">
-        <div className="bg-green-200 px-5 pt-3 rounded-2xl w-full  h-[27dvh] min-h-[210px]  relative ">
+        <div className="bg-white px-5 pt-3 rounded-2xl w-full  h-[27dvh] min-h-[210px]  relative ">
           <h2 className="text-2xl font-black"> Find a trip </h2>
         
 

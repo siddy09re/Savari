@@ -13,7 +13,7 @@ const VehiclesPanel = ({setvehiclepanel , setselectedvehicle , RideFareandTime})
 
     const vehicles =[
         {
-            name: "UberGo", 
+            name: "SavariGo", 
             seats: 4,
             duration : RideFareandTime?.Car.timeInMinutes,
             price: RideFareandTime?.Car.fare,
@@ -22,7 +22,7 @@ const VehiclesPanel = ({setvehiclepanel , setselectedvehicle , RideFareandTime})
             vehicleType : "Car"
         },
         {
-            name: "UberBike",
+            name: "SavariBike",
             seats: 1,
             duration : RideFareandTime?.Bike.timeInMinutes,
             price: RideFareandTime?.Bike.fare,
@@ -31,7 +31,7 @@ const VehiclesPanel = ({setvehiclepanel , setselectedvehicle , RideFareandTime})
              vehicleType : "Bike"
           },
         {
-            name: "UberAuto",
+            name: "SavariAuto",
             seats: 3,
             duration : RideFareandTime?.Auto.timeInMinutes,
             price: RideFareandTime?.Auto.fare,

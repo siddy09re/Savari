@@ -97,7 +97,7 @@ const [PaymentData,setPaymentData] = useState(null);
     const intervalId = setInterval(updateLocation, 7000);
 
     socket.on('PaymentSuccess' , async (data) => {
-      console.log("Payment hogya babu bhaiiiiiiiiiiiiiiiiiiiiiiiiiiii" , data);
+      console.log("Payment hogya" , data);
       setFinishedrideInfo(true);
       setPaymentData(data);
     })
