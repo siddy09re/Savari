@@ -9,7 +9,7 @@ import {SelectedVehicleDetails } from '../Redux/SelectedVehicleSlice';
 
 const VehiclesPanel = ({setvehiclepanel , setselectedvehicle , RideFareandTime}) => {
     const dispatch = useDispatch();
-    console.log("vehicle panel")
+    console.log("vehicle panels")
 
     const vehicles =[
         {

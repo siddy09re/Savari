@@ -61,7 +61,7 @@ const UserScreen = () => {
     socket.emit("join" , {userId : user._id, userType : 'user'});
     
     const handler = () => {
-      console.log("ride confirmed user has been called");
+      console.log("ride confirmed user had from userScreen page been called");
       navigate('/User-riding');
     };
   
