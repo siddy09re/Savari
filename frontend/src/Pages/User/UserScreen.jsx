@@ -244,7 +244,7 @@ const UserScreen = () => {
 
 
   return (
-    <div className="relative w-full h-[100dvh] overflow-hidden ">
+    <div className="relative w-full h-[100dvh] overflow-hidden  ">
       
 
       <h1 className="absolute top-10 left-5 text-[44px] z-10 italic font-bold">Savari</h1>
@@ -277,7 +277,7 @@ const UserScreen = () => {
 
       {/* //added overflow-clip rather than on top */}
       <div className="flex flex-col justify-end absolute bottom-0 w-full z-10 ">
-        <div className="bg-green-200 px-5 pt-3 rounded-2xl w-full  h-[27dvh]  relative ">
+        <div className="bg-green-200 px-5 pt-3 rounded-2xl w-full  h-[27dvh] min-h-[210px]  relative ">
           <h2 className="text-2xl font-black"> Find a trip </h2>
         
 
@@ -353,7 +353,8 @@ const UserScreen = () => {
             </div>
 
 
-            <button type="submit" className=" absolute bottom-[-5px] right-[45%]  z-10" >
+            <button type="submit" className=" absolute bottom-[-20px] right-[42%] px-3 py-2 bg-white
+             text-green-700 border border-green-600 hover:bg-green-100 font-semibold rounded-xl z-10" >
               Submit
             </button>
           </form>
