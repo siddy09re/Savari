@@ -8,7 +8,8 @@ import mapboxgl from "mapbox-gl";
 import { useContext } from "react";
 import { UserDataContext } from "../context/UserContext";
 
-
+import ScreenLoader from "../../Components/Loader/ScreenLoader";
+import ButtonLoader from "../../Components/Loader/ButtonLoader";
 import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
 import { IoIosArrowUp } from "react-icons/io";
@@ -47,7 +48,8 @@ const UserScreen = () => {
   const vehiclepanelref = useRef(null);
   const LookingForDriverref = useRef(null);
   const DriverFoundref = useRef(null);
-
+  const [logoutloader,setlogoutloader] = useState(false);
+  const [submitloader,setsubmitloader] = useState(false);
 
   const [longtitude , setlongtitude] = useState(null);
   const [latitude , setlatitude] = useState(null);
@@ -82,6 +84,7 @@ const UserScreen = () => {
         if(!distance){
           alert("Please select the pickup and destination location")
         }
+        setsubmitloader(true);
 
         const journeyDistance = {
           "distance" : distance
@@ -96,18 +99,20 @@ const UserScreen = () => {
             const ridedetails = data.ridedetails;
             setRideFareandTime(ridedetails);
             console.log(data , "fare and time");
+            setsubmitloader(false);
             setvehiclepanel(true)
             setpanelopen(false)
           }
         }catch(err){
           console.log("Error in getting fare and time", err);
+          setsubmitloader(false);
         }
   }
  
 
   const handleLogout = async () => {
     console.log("Logout");
-
+    setlogoutloader(true);
     try {
       const token = localStorage.getItem("Usertoken");
       const response = await axios.get(
@@ -122,11 +127,13 @@ const UserScreen = () => {
       if (response.status === 200) {
         console.log("User Logout Successfully", response.data);
         localStorage.removeItem("Usertoken");
+        setlogoutloader(false);
         navigate("/User-login");
         // setuser(null);
       }
     } catch (err) {
       console.log("Logout Error", err);
+      setlogoutloader(false);
     }
   };
 
@@ -246,6 +253,12 @@ const UserScreen = () => {
   return (
     <div className="relative w-full h-[100dvh] overflow-hidden  ">
       
+      {logoutloader && (
+        <div className="z-50 bg-white h-screen flex flex-col gap-4 justify-center items-center fixed top-0 left-0 w-full">
+          <p>Logging Out...</p>
+          <ScreenLoader/>
+        </div>
+      )}
 
       <h1 className="absolute top-10 left-5 text-[44px] z-10 italic font-bold">Savari</h1>
       
@@ -354,8 +367,13 @@ const UserScreen = () => {
 
 
             <button type="submit" className=" absolute bottom-[-20px] right-[42%] px-3 py-2 bg-white
-             text-green-700 border border-green-600 hover:bg-green-100 font-semibold rounded-xl z-10" >
+             text-green-700 border border-green-600 hover:bg-green-100 font-semibold rounded-xl z-10 flex gap-3" >
               Submit
+              <>{
+                    submitloader && (
+                      <ButtonLoader/>
+                    )
+                    }</>
             </button>
           </form>
         </div>

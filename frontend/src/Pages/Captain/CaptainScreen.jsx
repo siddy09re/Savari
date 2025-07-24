@@ -17,6 +17,7 @@ import mapboxgl from "mapbox-gl";
 import UsersAvailable from './UsersAvailable';
 import MapBoxContainer from '../User/MapBoxContainer';
 import { SetTravelDetails } from '../../Redux/CaptainDetailsSlice';
+import ScreenLoader from '../../Components/Loader/ScreenLoader';
 
 const CaptainScreen = () => {
 
@@ -26,6 +27,7 @@ const CaptainScreen = () => {
   const [longtitude , setlongtitude] = useState(null);
   const [ShowDrivermaker , setShowDriverMarker] = useState(false);
   const [DriverLocation , setDriverLocation] = useState(null);
+  const [logoutloader,setlogoutloader] = useState(false);
 
   const navigate = useNavigate();
   const availablerideref = useRef(null);
@@ -151,7 +153,7 @@ useEffect(() => {
 
 
   const handleLogout = async () =>{
-
+      setlogoutloader(true);
     try{
       const token = localStorage.getItem('Captaintoken');
       const response = await axios.get(
@@ -166,11 +168,13 @@ useEffect(() => {
       if(response.status === 200){
         console.log("Captain Logout Successfully", response.data);
         localStorage.removeItem('Captaintoken');
+        setlogoutloader(false);
         navigate('/Captain-login');
         // setuser(null);
       }
     }catch(err){
       console.log("Logout Error" , err);
+      setlogoutloader(false);
     }
   }
 
@@ -235,6 +239,13 @@ useEffect(() => {
 
   return (
     <div>
+
+      {logoutloader && (
+        <div className="z-50 bg-white h-screen flex flex-col gap-4 justify-center items-center fixed top-0 left-0 w-full">
+          <p>Logging Out...</p>
+          <ScreenLoader/>
+        </div>
+      )}
               
            <div className='w-[100%]   relative'>
 

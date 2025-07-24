@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { FaLocationDot } from "react-icons/fa6";
 import { useSelector } from 'react-redux';
 import { IoIosArrowDown } from "react-icons/io";
@@ -12,6 +12,7 @@ import {SetRideDetails} from '../Redux/SelectedVehicleSlice';
 const LookingForDriver = ({setLookingForDriverstate}) => {
      const selectedvehicle = useSelector((state) => state.SelectedVehicle.SelectedVehicle);
      const RideDetails = useSelector((state) => state.SelectedVehicle.RideDetails);
+     const [lookingdropdown,setlookingdropdown] = useState(false);
      console.log("the ride details are" ,RideDetails);
      const dispatch = useDispatch();
        const {socket} = useContext(SocketContext);
@@ -29,15 +30,15 @@ const LookingForDriver = ({setLookingForDriverstate}) => {
 
 
   return (
-    <div>
+    <div className={`
+    transition-all duration-300 transform ${
+    lookingdropdown ? "translate-y-72" : "translate-y-100"}`}>
        
-    <div className='w-[100%] bg-white z-20 px-5 rounded-2xl'>
+    <div className='w-[100%] bg-white z-20 px-5 rounded-2xl py-3 '>
                
-                <div className='w-full flex justify-center '>
-                  <IoIosArrowDown className='h-10' onClick={() => setLookingForDriverstate(false)}/>
-                </div>
+               
 
-                <h1 className='text-center w-full text-2xl font-black'>Looking for a driver</h1>
+                <h1 className='text-center w-full text-2xl font-black'>Looking for a driver...</h1>
 
                 <div className='my-2 border-b-2 flex justify-center' >
                     <img src={selectedvehicle?.image} className='w-full max-h-[400px] max-w-[200px]' />

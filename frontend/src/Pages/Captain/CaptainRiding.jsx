@@ -70,11 +70,17 @@ const [PaymentData,setPaymentData] = useState(null);
   
     const updateLocation = async () => {
       try {
-        const response = await axios.get('https://ipwho.is/');
-        const { latitude, longitude } = response.data;
-        setlatitude(latitude);
-        setlongtitude(longitude);
-        setDriverLocation([longtitude,latitude]);
+        if ("geolocation" in navigator) {
+      console.log("Geolocation is supported");
+
+      navigator.geolocation.getCurrentPosition(
+        (position) => {
+          console.log(" successlocation:", position);
+          const { latitude, longitude } = position.coords;
+          console.log("Latitude:", latitude, "Longitude:", longitude);
+          setlatitude(latitude);
+          setlongtitude(longitude);
+          setDriverLocation([longtitude,latitude]);
   
         console.log("Location from ipwho.is:", latitude, longitude);
   
@@ -85,6 +91,20 @@ const [PaymentData,setPaymentData] = useState(null);
             lng: longitude
           }
         });
+        
+        },
+        (error) => {
+          console.error(" errorlocation:", error);
+          // alert("Please enable location");
+        }
+        // {
+        //   enableHighAccuracy: true
+        // }
+      );
+    } else {
+      console.warn("Geolocation not supported");
+    }
+        
       } catch (err) {
         console.log("Error getting location:", err);
       }
